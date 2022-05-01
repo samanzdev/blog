@@ -12,12 +12,14 @@
         <!--navbar-collapse-->
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav mr-5">
-                @foreach(getCategory() as $categories)
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{ route('blog.category', $categories->slug) }}">{{ $categories->name }}</a>
-                    </li>
-                @endforeach
+                @if(getCategory())
+                    @foreach(getCategory() as $categories)
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{{ route('blog.category', $categories->slug) }}">{{ $categories->name }}</a>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
             <ul class="navbar-nav mr-auto ml-3">
                 @if(\Illuminate\Support\Facades\Auth::check())
